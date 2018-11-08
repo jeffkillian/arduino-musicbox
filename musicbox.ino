@@ -14,26 +14,29 @@ int writeValue;
 int readValue;
 // notes in the melody:
 
-const int buttonPin = 2;     // the number of the pushbutton pin
-int buttonState = 0;         // variable for reading the pushbutton status
+const int buttonOnePin = 2;     // the number of the pushbutton pin
+const int buttonTwoPin = 3;     // the number of the pushbutton pin
 
 void setup() {
     // initialize the pushbutton pin as an input:
-  pinMode(buttonPin, INPUT);
+  pinMode(buttonOnePin, INPUT);
+  pinMode(buttonTwoPin, INPUT);
     Serial.begin(9600);      // turn on Serial Port
 }
 
 void loop() {
   // read the state of the pushbutton value:
-  buttonState = digitalRead(buttonPin);
-  Serial.println(buttonState);
+  int buttonOneState = digitalRead(buttonOnePin);
+   int buttonTwoState = digitalRead(buttonTwoPin);
+  Serial.println(buttonTwoState);
   // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
-  if (buttonState == HIGH) {
-    
-     tone(8, random(20, 4970), 200);
+  if (buttonOneState == HIGH) {
+     tone(8, 300, 50);
      delay(200);
-  } else {
-    // turn LED off:
+  }
+    if (buttonTwoState == HIGH) {
+     tone(8, 3000, 50);
+     delay(200);
   }
 }
 
